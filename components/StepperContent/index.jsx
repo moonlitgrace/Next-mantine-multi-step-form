@@ -1,6 +1,7 @@
 import { Box, Button, Group, UnstyledButton } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
 import React, { useState } from 'react'
+import { StepperFive } from './StepperFive'
 import { StepperFour } from './StepperFour'
 import { StepperOne } from './StepperOne'
 import { StepperThree } from './StepperThree'
@@ -59,11 +60,11 @@ export const StepperContent = ({ active, nextStep, prevStep }) => {
                            <StepperThree /> :
                            active === 3 ?
                               <StepperFour /> :
-                              null
+                              <StepperFive />
                }
                {/** next / prev step button */}
                <Box sx={{
-                  display: 'flex',
+                  display: active >= 4 ? 'none' : 'flex',
                   alignItems: 'center',
                   justifyContent: active === 0 ? 'end' : 'space-between'
                }}>

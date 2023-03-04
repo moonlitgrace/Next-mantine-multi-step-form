@@ -14,21 +14,21 @@ export const ContextProvider = ({ children }) => {
       if (monthly) {
          if (plan === 1) {
             total += 9
-            if (addOns.some(addOn => addOn === 1)) total += 1
-            if (addOns.some(addOn => addOn === 2)) total += 2
-            if (addOns.some(addOn => addOn === 3)) total += 2
+            if (addOns.includes(1)) total += 1
+            if (addOns.includes(2)) total += 2
+            if (addOns.includes(3)) total += 2
 
          } else if (plan === 2) {
             total += 12
-            if (addOns.some(addOn => addOn === 1)) total += 1
-            if (addOns.some(addOn => addOn === 2)) total += 2
-            if (addOns.some(addOn => addOn === 3)) total += 2
+            if (addOns.includes(1)) total += 1
+            if (addOns.includes(2)) total += 2
+            if (addOns.includes(3)) total += 2
 
          } else {
             total += 15
-            if (addOns.some(addOn => addOn === 1)) total += 1
-            if (addOns.some(addOn => addOn === 2)) total += 2
-            if (addOns.some(addOn => addOn === 3)) total += 2
+            if (addOns.includes(1)) total += 1
+            if (addOns.includes(2)) total += 2
+            if (addOns.includes(3)) total += 2
 
          }
       }
@@ -36,21 +36,21 @@ export const ContextProvider = ({ children }) => {
       else {
          if (plan === 1) {
             total += 19
-            if (addOns.some(addOn => addOn === 1)) total += 10
-            if (addOns.some(addOn => addOn === 2)) total += 12
-            if (addOns.some(addOn => addOn === 3)) total += 12
+            if (addOns.includes(1)) total += 10
+            if (addOns.includes(2)) total += 12
+            if (addOns.includes(3)) total += 12
 
          } else if (plan === 2) {
             total += 120
-            if (addOns.some(addOn => addOn === 1)) total += 10
-            if (addOns.some(addOn => addOn === 2)) total += 12
-            if (addOns.some(addOn => addOn === 3)) total += 12
+            if (addOns.includes(1)) total += 10
+            if (addOns.includes(2)) total += 12
+            if (addOns.includes(3)) total += 12
 
          } else {
             total += 150
-            if (addOns.some(addOn => addOn === 1)) total += 10
-            if (addOns.some(addOn => addOn === 2)) total += 12
-            if (addOns.some(addOn => addOn === 3)) total += 12
+            if (addOns.includes(1)) total += 10
+            if (addOns.includes(2)) total += 12
+            if (addOns.includes(3)) total += 12
 
          }
       }

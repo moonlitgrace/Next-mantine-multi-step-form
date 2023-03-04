@@ -1,12 +1,12 @@
-import { Box, Group, Stack, useMantineTheme } from '@mantine/core'
+import { Box, Group } from '@mantine/core'
 import React, { useState } from 'react'
 import { StepperContent } from './StepperContent'
 import { StepperStep } from './StepperStep'
 0
 export const MainContainer = () => {
-   const theme = useMantineTheme()
    const [active, setActive] = useState(0)
-   const nextStep = () => setActive((active) => (active < 3 ? active + 1 : active))
+
+   const nextStep = () => setActive((active) => (active < 4 ? active + 1 : active))
    const prevStep = () => setActive((active) => (active > 0 ? active - 1 : active))
 
    return (
