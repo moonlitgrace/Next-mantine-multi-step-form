@@ -1,17 +1,9 @@
 import { Box, Card, Checkbox, Flex, Group, Stack, Text, Title } from '@mantine/core'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { Context } from '../context/Context'
 
 export const StepperThree = () => {
-   const [addOns, setAddOns] = useState([])
-   const handleAddOns = (index) => {
-      if (!addOns.some(addOn => addOn === index)) {
-         const obj = [...addOns, index]
-         setAddOns(obj)
-      } else {
-         const obj = addOns.filter(addOns => addOns !== index)
-         setAddOns(obj)
-      }
-   }
+   const { addOns, handleAddOns, monthly } = useContext(Context)
 
    return (
       <>
@@ -42,7 +34,7 @@ export const StepperThree = () => {
                         gap: '1rem'
                      }}>
                         <Checkbox
-
+                           checked={addOns.some(addOn => addOn === 1)}
                            onChange={() => handleAddOns(1)}
                         />
                         <Flex w={'100%'} align={'center'} justify={'space-between'}>
@@ -50,7 +42,7 @@ export const StepperThree = () => {
                               <Text fz={15} fw={500} color={'hsl(213, 96%, 18%)'}>Online service</Text>
                               <Text fz={13} color={'hsl(213, 96%, 18%, 0.5)'}>Access to multiplayer games.</Text>
                            </Stack>
-                           <Text fz={13} color={'hsl(243, 100%, 62%)'}>+1$/mo</Text>
+                           <Text fz={13} color={'hsl(243, 100%, 62%)'}>{monthly ? '+1$/mo' : '+10$/yr'}</Text>
                         </Flex>
                      </label>
                   </Card>
@@ -67,7 +59,7 @@ export const StepperThree = () => {
                         gap: '1rem'
                      }}>
                         <Checkbox
-
+                           checked={addOns.some(addOn => addOn === 2)}
                            onChange={() => handleAddOns(2)}
                         />
                         <Flex w={'100%'} align={'center'} justify={'space-between'}>
@@ -75,7 +67,7 @@ export const StepperThree = () => {
                               <Text fz={15} fw={500} color={'hsl(213, 96%, 18%)'}>Larger storage</Text>
                               <Text fz={13} color={'hsl(213, 96%, 18%, 0.5)'}>Extra 1 TB of cloud save.</Text>
                            </Stack>
-                           <Text fz={13} color={'hsl(243, 100%, 62%)'}>+2$/mo</Text>
+                           <Text fz={13} color={'hsl(243, 100%, 62%)'}>{monthly ? '+2$/mo' : '+12$/yr'}</Text>
                         </Flex>
                      </label>
                   </Card>
@@ -92,6 +84,7 @@ export const StepperThree = () => {
                         gap: '1rem'
                      }}>
                         <Checkbox
+                           checked={addOns.some(addOn => addOn === 3)}
                            onChange={() => handleAddOns(3)}
                         />
                         <Flex w={'100%'} align={'center'} justify={'space-between'}>
@@ -99,7 +92,7 @@ export const StepperThree = () => {
                               <Text fz={15} fw={500} color={'hsl(213, 96%, 18%)'}>Customizable profile</Text>
                               <Text fz={13} color={'hsl(213, 96%, 18%, 0.5)'}>Custom theme on your profile.</Text>
                            </Stack>
-                           <Text fz={13} color={'hsl(243, 100%, 62%)'}>+2$/mo</Text>
+                           <Text fz={13} color={'hsl(243, 100%, 62%)'}>{monthly ? '+2$/mo' : '+12$/yr'}</Text>
                         </Flex>
                      </label>
                   </Card>

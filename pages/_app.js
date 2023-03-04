@@ -1,3 +1,4 @@
+import { ContextProvider } from '@/components/context/Context';
 import '@/styles/globals.css'
 import { MantineProvider } from '@mantine/core';
 
@@ -12,7 +13,9 @@ export default function App({ Component, pageProps }) {
                colorScheme: 'light',
             }}
          >
-            <Component {...pageProps} />
+            <ContextProvider>
+               <Component {...pageProps} />
+            </ContextProvider>
          </MantineProvider>
       </>
    )

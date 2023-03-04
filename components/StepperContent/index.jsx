@@ -1,12 +1,13 @@
 import { Box, Button, Group, UnstyledButton } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
-import React from 'react'
+import React, { useState } from 'react'
 import { StepperFour } from './StepperFour'
 import { StepperOne } from './StepperOne'
 import { StepperThree } from './StepperThree'
 import { StepperTwo } from './StepperTwo'
 
 export const StepperContent = ({ active, nextStep, prevStep }) => {
+
    const largeScreen = useMediaQuery('(min-width: 900px)')
    return (
       <>
@@ -49,7 +50,17 @@ export const StepperContent = ({ active, nextStep, prevStep }) => {
                   }
                }}
             >
-               {active === 0 ? <StepperOne /> : active === 1 ? <StepperTwo /> : active === 2 ? <StepperThree /> : active === 3 ? <StepperFour /> : null}
+               {
+                  active === 0 ?
+                     <StepperOne /> :
+                     active === 1 ?
+                        <StepperTwo /> :
+                        active === 2 ?
+                           <StepperThree /> :
+                           active === 3 ?
+                              <StepperFour /> :
+                              null
+               }
                {/** next / prev step button */}
                <Box sx={{
                   display: 'flex',

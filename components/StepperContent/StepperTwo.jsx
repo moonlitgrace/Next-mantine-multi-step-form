@@ -1,19 +1,12 @@
 import { Box, Card, Grid, Group, Image, Text, Title } from '@mantine/core'
 import { useMediaQuery } from '@mantine/hooks'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Switch from 'react-switch'
+import { Context } from '../context/Context'
 
 export const StepperTwo = () => {
+   const { togglePlanTimeChange, handlePlanSelect, plan, monthly } = useContext(Context)
    const largeScreen = useMediaQuery('(min-width: 748px)')
-   const [plan, setPlan] = useState(1)
-   const [monthly, setMonthly] = useState(true)
-
-   const handlePlanSelect = (index) => {
-      setPlan(index)
-   }
-   const togglePlanTimeChange = () => {
-      setMonthly(!monthly)
-   }
 
    return (
       <>

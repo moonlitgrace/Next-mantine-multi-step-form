@@ -1,7 +1,11 @@
 import { Box, Divider, Flex, Group, Stack, Text, Title } from '@mantine/core'
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../context/Context'
 
 export const StepperFour = () => {
+   const { monthly, addOns, plan, getTotal } = useContext(Context)
+   const total = getTotal()
+
    return (
       <>
          <Group>
@@ -16,29 +20,57 @@ export const StepperFour = () => {
                      borderRadius: '10px',
                   }}>
                      <Box>
-                        <Flex align={'center'} justify={'space-between'}>
-                           <Text fw={500} fz={14} color={'hsl(213, 96%, 18%)'}>Arcade (Monthly)</Text>
-                           <Text fw={600} fz={14} color={'hsl(213, 96%, 18%)'}>$9/mo</Text>
-                        </Flex>
+                        {
+                           plan === 1 ?
+                              <Flex align={'center'} justify={'space-between'}>
+                                 <Text fw={500} fz={14} color={'hsl(213, 96%, 18%)'}>Arcade ({monthly ? 'Monthly' : 'Yearly'})</Text>
+                                 <Text fw={600} fz={14} color={'hsl(213, 96%, 18%)'}>{monthly ? '$9/mo' : '$19/yr'}</Text>
+                              </Flex>
+                              : plan === 2 ?
+                                 <Flex align={'center'} justify={'space-between'}>
+                                    <Text fw={500} fz={14} color={'hsl(213, 96%, 18%)'}>Advanced ({monthly ? 'Monthly' : 'Yearly'})</Text>
+                                    <Text fw={600} fz={14} color={'hsl(213, 96%, 18%)'}>{monthly ? '$12/mo' : '$120/yr'}</Text>
+                                 </Flex>
+                                 :
+                                 <Flex align={'center'} justify={'space-between'}>
+                                    <Text fw={500} fz={14} color={'hsl(213, 96%, 18%)'}>Pro ({monthly ? 'Monthly' : 'Yearly'})</Text>
+                                    <Text fw={600} fz={14} color={'hsl(213, 96%, 18%)'}>{monthly ? '$15/mo' : '$150/yr'}</Text>
+                                 </Flex>
+                        }
                      </Box>
                      <Divider />
-                     <Box>
-                        <Flex align={'center'} justify={'space-between'}>
-                           <Text fz={12} color={'hsl(213, 96%, 18%, 0.5)'}>Online service</Text>
-                           <Text fz={12} color={'hsl(213, 96%, 18%)'}>$1/mo</Text>
-                        </Flex>
-                     </Box>
-                     <Box>
-                        <Flex align={'center'} justify={'space-between'}>
-                           <Text fz={12} color={'hsl(213, 96%, 18%, 0.5)'}>Larger storage</Text>
-                           <Text fz={12} color={'hsl(213, 96%, 18%)'}>$2/mo</Text>
-                        </Flex>
-                     </Box>
+                     {
+                        addOns.some(addOn => addOn === 1) &&
+                        <Box>
+                           <Flex align={'center'} justify={'space-between'}>
+                              <Text fz={12} color={'hsl(213, 96%, 18%, 0.5)'}>Online service</Text>
+                              <Text fz={12} color={'hsl(213, 96%, 18%)'}>{monthly ? '$1/mo' : '$10/yr'}</Text>
+                           </Flex>
+                        </Box>
+                     }
+                     {
+                        addOns.some(addOn => addOn === 2) &&
+                        <Box>
+                           <Flex align={'center'} justify={'space-between'}>
+                              <Text fz={12} color={'hsl(213, 96%, 18%, 0.5)'}>Larger storage</Text>
+                              <Text fz={12} color={'hsl(213, 96%, 18%)'}>{monthly ? '$2/mo' : '$12/yr'}</Text>
+                           </Flex>
+                        </Box>
+                     }
+                     {
+                        addOns.some(addOn => addOn === 3) &&
+                        <Box>
+                           <Flex align={'center'} justify={'space-between'}>
+                              <Text fz={12} color={'hsl(213, 96%, 18%, 0.5)'}>Customizable profile</Text>
+                              <Text fz={12} color={'hsl(213, 96%, 18%)'}>{monthly ? '$2/mo' : '$12/yr'}</Text>
+                           </Flex>
+                        </Box>
+                     }
                   </Stack>
                   <Box p={15}>
                      <Flex align={'center'} justify={'space-between'}>
-                        <Text fz={12} color={'hsl(213, 96%, 18%, 0.5)'}>Total (per month)</Text>
-                        <Text fz={17} fw={600} color={'hsl(243, 100%, 62%)'}>$12/mo</Text>
+                        <Text fz={13} color={'hsl(213, 96%, 18%, 0.5)'}>Total (per {monthly ? 'month' : 'year'})</Text>
+                        <Text fz={17} fw={600} color={'hsl(243, 100%, 62%)'}>${total}/{monthly ? 'mo' : 'yr'}</Text>
                      </Flex>
                   </Box>
                </Stack>
